@@ -33,9 +33,13 @@ Route::delete('publishers/{id}', 'PublisherController@destroy');
  * Edit Publisher
  */
 
-// Route::edit('publishers', 'PublisherController@edit');
+Route::get('publisher/update/{id}', 'PublisherController@edit');
 
+/**
+ * Update Publisher
+ */
 
+Route::put('publisher/update/{id}/name/{name}', 'PublisherController@update');
 
 /**
  * List All Series

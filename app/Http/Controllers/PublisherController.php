@@ -17,8 +17,9 @@ class PublisherController extends Controller
      */
     public function index()
     {
-        $publishers = DB::select("SELECT id, name FROM publishers");
-        return view("publishers", ['publishers' => $publishers]);
+        $publishers = DB::table('publishers')->get();
+
+        return view("publishers.publishers", ['publishers' => $publishers]);
     }
 
     /**
@@ -28,10 +29,16 @@ class PublisherController extends Controller
      */
     public function create(Request $request)
     {
-        $name = $request->input('name');
-        DB::insert("INSERT INTO publishers (name) VALUES (?)", [$name]);
-        echo "Record inserted successfully.<br>";
-        echo "<a href = '/publishers'>Click here</a> to go back.";
+
+        $publisher = new Publisher;
+
+        $publisher->name = $request->name;
+
+        $publisher->save();
+
+        Session::flash('flash_message', 'Publisher successfully created');
+        
+        return redirect()->route('publishers');
     }
 
     /**
@@ -64,7 +71,8 @@ class PublisherController extends Controller
      */
     public function edit($id)
     {
-        //
+        $publisher = Publisher::findOrFail($id);
+        return view("publishers.editPublisher", ['publisher' => $publisher]);
     }
 
     /**
@@ -74,9 +82,21 @@ class PublisherController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function update(Request $request, $id)
     {
-        //
+        
+        $newPublisherName = $request->name;
+
+        $publisher = Publisher::findOrFail($id);
+
+        $publisher->name = $newPublisherName;
+
+        $publisher->save();
+
+        Session::flash('flash_message', 'Publisher successfully deleted');
+        
+        return redirect()->route('publishers');
     }
 
     /**
