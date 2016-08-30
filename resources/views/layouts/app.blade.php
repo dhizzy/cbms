@@ -30,8 +30,8 @@
             <div class="navbar-header">
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/publishers') }}">
-                    Publisher List
+                <a class="navbar-brand" href="{{ url('') }}">
+                    Home
                 </a>
             </div>
 

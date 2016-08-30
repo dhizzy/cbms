@@ -12,10 +12,17 @@ class CreatePublishersTable extends Migration
      */
     public function up()
     {
-        Schema::create('publishers', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-        });
+        if(Schema::hasTable('users')){
+        
+            return;
+        
+        }else{
+
+            Schema::create('publishers', function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('name');
+            });
+        }
     }
 
     /**

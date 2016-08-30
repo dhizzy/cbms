@@ -3,7 +3,7 @@
 Route::get('/', function(){
 	echo "<a href = 'publishers'>Publishers</a>";
 	echo "<br>";
-	echo "<a href = 'series'>Series</a>";
+	echo "<a href = 'titles'>Series</a>";
 	echo "<br>";
 	echo "<a href = 'volume'>Volume</a>";
 	echo "<br>";
@@ -42,30 +42,36 @@ Route::get('publisher/update/{id}', 'PublisherController@edit');
 Route::put('publisher/update/{id}/name/{name}', 'PublisherController@update');
 
 /**
- * List All Series
+ * List All Titles
  */
 
-//Route::get('series', 'SeriesController@index');
+// Route::get('titles', 'TitleController@index');
+
+Route::get('titles', ['as' => 'titles', 'uses' => 'TitleController@index']);
 
 /**
- * Add New Series
+ * Create New Title
  */
 
-//Route::post('series', 'PublisherController@create');
+Route::post('titles', 'TitleController@create');
 
 /**
  * Delete Series
  */
 
-//Route::destroy('series', 'PublisherController@destroy');
+Route::delete('titles/{id}', 'TitleController@destroy');
 
 /**
  * Edit Series
  */
 
-//Route::edit('series', 'PublisherController@edit');
+Route::get('title/update/{id}', 'TitleController@edit');
 
+/**
+ * Update Publisher
+ */
 
+Route::put('title/update/{id}/name/{name}', 'TitleController@update');
 
 /**
  * List All Volumes

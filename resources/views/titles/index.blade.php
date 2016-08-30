@@ -5,7 +5,7 @@
         <div class="col-sm-offset-2 col-sm-8">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    New Publisher
+                    New Title
                 </div>
 
                 <div class="panel-body">
@@ -13,15 +13,15 @@
                     @include('common.errors')
 
                     <!-- New Publisher Form -->
-                    <form action="{{ url('publishers')}}" method="POST" class="form-horizontal">
+                    <form action="{{ url('titles')}}" method="POST" class="form-horizontal">
                         {{ csrf_field() }}
 
                         <!-- Publisher Name -->
                         <div class="form-group">
-                            <label for="publisher-name" class="col-sm-3 control-label">Publisher</label>
+                            <label for="title-name" class="col-sm-3 control-label">Title</label>
 
                             <div class="col-sm-6">
-                                <input type="text" name="name" id="publisher-name" class="form-control" value="{{ old('publishers') }}">
+                                <input type="text" name="name" id="title-name" class="form-control" value="{{ old('titles') }}">
                             </div>
                         </div>
 
@@ -29,7 +29,7 @@
                         <div class="form-group">
                             <div class="col-sm-offset-3 col-sm-6">
                                 <button type="submit" class="btn btn-default">
-                                    <i class="fa fa-btn fa-plus"></i>Add Publisher
+                                    <i class="fa fa-btn fa-plus"></i>Add Title
                                 </button>
                             </div>
                         </div>
@@ -38,26 +38,26 @@
             </div>
 
             <!-- Current Publishers -->
-            @if (count($publishers) > 0)
+            @if (count($titles) > 0)
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        Current Publishers
+                        Current Titles
                     </div>
 
                     <div class="panel-body">
-                        <table class="table table-striped publisher-table">
+                        <table class="table table-striped title-table">
                             <thead>
-                                <th>Publisher</th>
+                                <th>Title</th>
                                 <th>&nbsp;</th>
                             </thead>
                             <tbody>
-                                @foreach ($publishers as $publisher)
+                                @foreach ($titles as $title)
                                     <tr>
-                                        <td class="table-text"><div>{{ $publisher->name }}</div></td>
+                                        <td class="table-text"><div>{{ $title->name }}</div></td>
 
                                         <!-- Publisher Delete Button -->
                                         <td>
-                                            <form action="{{ url('publishers/'.$publisher->id) }}" method="POST">
+                                            <form action="{{ url('titles/'.$title->id) }}" method="POST">
                                                 {{ csrf_field() }}
                                                 {{ method_field('DELETE') }}
 
@@ -65,8 +65,8 @@
                                                     <i class="fa fa-btn fa-trash"></i>Delete
                                                 </button>
 
-                                                <a class="btn btn-info" href="{{ url('publisher/update/'.$publisher->id) }}">
-                                                    <i class="fa fa-btn fa-pencil-square-o"></i>Edit Publisher
+                                                <a class="btn btn-info" href="{{ url('title/update/'.$title->id) }}">
+                                                    <i class="fa fa-btn fa-pencil-square-o"></i>Edit Title
                                                 </a>
 
                                             </form>
@@ -77,6 +77,7 @@
                         </table>
                     </div>
                 </div>
+
             @endif
         </div>
     </div>
