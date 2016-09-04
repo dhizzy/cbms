@@ -5,7 +5,7 @@
         <div class="col-sm-offset-2 col-sm-8">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    New Publisher
+                    Add Issue
                 </div>
 
                 <div class="panel-body">
@@ -13,15 +13,15 @@
                     @include('common.errors')
 
                     <!-- New Publisher Form -->
-                    <form action="{{ url('publishers')}}" method="POST" class="form-horizontal">
+                    <form action="{{ url('issues')}}" method="POST" class="form-horizontal">
                         {{ csrf_field() }}
 
                         <!-- Publisher Name -->
                         <div class="form-group">
-                            <label for="publisher-name" class="col-sm-3 control-label">Publisher</label>
+                            <label for="issue-name" class="col-sm-3 control-label">Issue</label>
 
                             <div class="col-sm-6">
-                                <input type="text" name="name" id="publisher-name" class="form-control" value="{{ old('publishers') }}">
+                                <input type="text" name="name" id="issue-name" class="form-control" value="{{ old('issues') }}">
                             </div>
                         </div>
 
@@ -29,7 +29,7 @@
                         <div class="form-group">
                             <div class="col-sm-offset-3 col-sm-6">
                                 <button type="submit" class="btn btn-default">
-                                    <i class="fa fa-btn fa-plus"></i>Add Publisher
+                                    <i class="fa fa-btn fa-plus"></i>Add Issue
                                 </button>
                             </div>
                         </div>
@@ -38,26 +38,44 @@
             </div>
 
             <!-- Current Publishers -->
-            @if (count($publishers) > 0)
+            @if (count($issues) > 0)
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        Current Publishers
+                        Current Issues
                     </div>
 
                     <div class="panel-body">
-                        <table class="table table-striped publisher-table">
+                        <table class="table table-striped issue-table">
                             <thead>
+                                <th>Title</th>
+                                <th>Issue</th>
                                 <th>Publisher</th>
                                 <th>&nbsp;</th>
                             </thead>
                             <tbody>
-                                @foreach ($publishers as $publisher)
+                                @foreach ($issues as $issue)
                                     <tr>
-                                        <td class="table-text"><div>{{ $publisher->name }}</div></td>
+                                        <td class="table-text">
+                                            <div>
+                                                <a href="{{ url('issue/' . $issue->id . '/volumes') }}">{{ $issue->name }}</a>
+                                            </div>
+                                        </td>
+
+                                        <td class="table-text">
+                                            <div>
+                                                <a href="{{ url('issue/' . $issue->id . '/volumes') }}">{{ $issue->issue }}</a>
+                                            </div>
+                                        </td>
+
+                                        <td class="table-text">
+                                            <div>
+                                                <a href="{{ url('issue/' . $issue->id . '/volumes') }}">{{ $issue->publisherName }}</a>
+                                            </div>
+                                        </td>
 
                                         <!-- Publisher Delete Button -->
                                         <td>
-                                            <form action="{{ url('publishers/'.$publisher->id) }}" method="POST">
+                                            <form action="{{ url('titles/'.$issue->id) }}" method="POST">
                                                 {{ csrf_field() }}
                                                 {{ method_field('DELETE') }}
 
@@ -65,8 +83,8 @@
                                                     <i class="fa fa-btn fa-trash"></i>Delete
                                                 </button>
 
-                                                <a class="btn btn-info" href="{{ url('publisher/update/'.$publisher->id) }}">
-                                                    <i class="fa fa-btn fa-pencil-square-o"></i>Edit Publisher
+                                                <a class="btn btn-info" href="{{ url('issue/update/'.$issue->id) }}">
+                                                    <i class="fa fa-btn fa-pencil-square-o"></i>Edit Title
                                                 </a>
 
                                             </form>
@@ -77,6 +95,7 @@
                         </table>
                     </div>
                 </div>
+
             @endif
         </div>
     </div>

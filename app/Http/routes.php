@@ -3,7 +3,7 @@
 Route::get('/', function(){
 	echo "<a href = 'publishers'>Publishers</a>";
 	echo "<br>";
-	echo "<a href = 'titles'>Series</a>";
+	echo "<a href = 'titles'>Titles</a>";
 	echo "<br>";
 	echo "<a href = 'volume'>Volume</a>";
 	echo "<br>";
@@ -56,28 +56,28 @@ Route::get('titles', ['as' => 'titles', 'uses' => 'TitleController@index']);
 Route::post('titles', 'TitleController@create');
 
 /**
- * Delete Series
+ * Delete Title
  */
 
 Route::delete('titles/{id}', 'TitleController@destroy');
 
 /**
- * Edit Series
+ * Edit Title
  */
 
 Route::get('title/update/{id}', 'TitleController@edit');
 
 /**
- * Update Publisher
+ * Update Title
  */
 
 Route::put('title/update/{id}/name/{name}', 'TitleController@update');
 
 /**
- * List All Volumes
+ * Get Volume of selected Title. Called from Titles view.
  */
 
-//Route::get('volumes', 'VolumeController@index');
+Route::get('title/{id}/volumes', 'VolumeController@index');
 
 /**
  * Add New Volume
@@ -103,7 +103,15 @@ Route::put('title/update/{id}/name/{name}', 'TitleController@update');
  * List All Issues
  */
 
-//Route::get('issues', 'IssuesController@index');
+Route::get('issues', 'IssueController@allIssues');
+
+
+/**
+ * List Issues For Selected Volume
+ */
+
+Route::get('issues/{volume}', 'IssueController@findIssues');
+
 
 /**
  * Add New Issues
