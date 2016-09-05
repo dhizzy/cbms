@@ -103,8 +103,13 @@ Route::delete('volumes/{volumeId}', 'VolumeController@destroy');
  * Edit Volume
  */
 
-//Route::edit('volumes', 'VolumeController@edit');
+Route::get('volume/edit/{volumeId}', 'VolumeController@edit');
 
+/**
+ * Update Volume
+ */
+
+Route::put('volume/update/{volid}', 'VolumeController@update');
 
 
 /**

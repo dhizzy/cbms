@@ -91,7 +91,7 @@
                                                     <i class="fa fa-btn fa-trash"></i>Delete
                                                 </button>
 
-                                                <a class="btn btn-info" href="{{ url('volume/update/'.$titleVolume->id) }}">
+                                                <a class="btn btn-info" href="{{ url('volume/edit/'.$titleVolume->volid) }}">
                                                     <i class="fa fa-btn fa-pencil-square-o"></i>Edit Volume
                                                 </a>
                                             </form>

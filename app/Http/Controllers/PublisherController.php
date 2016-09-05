@@ -94,7 +94,7 @@ class PublisherController extends Controller
 
         $publisher->save();
 
-        Session::flash('flash_message', 'Publisher successfully deleted');
+        Session::flash('flash_message', 'Publisher successfully updated');
         
         return redirect()->route('publishers');
     }
