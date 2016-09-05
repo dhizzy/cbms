@@ -3,39 +3,53 @@
 @section('content')
     <div class="container">
         <div class="col-sm-offset-2 col-sm-8">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    New Volume
-                </div>
+        	@if (isset($titleName))
+	            <div class="panel panel-default">
+	                <div class="panel-heading">
+	                    Add New Volume to {{ $titleName }}
+	                </div>
 
-                <div class="panel-body">
-                    <!-- Display Validation Errors -->
-                    @include('common.errors')
+	                <div class="panel-body">
+	                    <!-- Display Validation Errors -->
+	                    @include('common.errors')
 
-                    <!-- New Publisher Form -->
-                    <form action="{{ url('volumes')}}" method="POST" class="form-horizontal">
-                        {{ csrf_field() }}
+	                    <!-- New Publisher Form -->
+	                    <form action="{{ url('volumes')}}" method="POST" class="form-horizontal">
+	                        {{ csrf_field() }}
 
-                        <!-- Publisher Name -->
-                        <div class="form-group">
-                            <label for="volume-name" class="col-sm-3 control-label">Volume</label>
+							<input type="hidden" name="titleNumber" id="title-number" class="form-control" value= "{{ $titleId }}" readonly="readonly">
 
-                            <div class="col-sm-6">
-                                <input type="text" name="name" id="volume-name" class="form-control" value="{{ old('volumes') }}">
-                            </div>
-                        </div>
+	                        <!-- Title Name -->
+	                        <div class="form-group">
+	                            <label for="title-name" class="col-sm-3 control-label">Title Name</label>
 
-                        <!-- Add Publisher Button -->
-                        <div class="form-group">
-                            <div class="col-sm-offset-3 col-sm-6">
-                                <button type="submit" class="btn btn-default">
-                                    <i class="fa fa-btn fa-plus"></i>Add Volume
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+	                            <div class="col-sm-6">
+	                            	<input type="text" name="title" id="title-name" class="form-control" value= "{{ $titleName }}" readonly="readonly">
+	                            </div>
+	                        </div>
+
+	                        <!-- Volume Number -->
+	                        <div class="form-group">
+	                            <label for="volume-number" class="col-sm-3 control-label">Volume</label>
+
+	                            <div class="col-sm-6">
+	                            	<input type="number" min="1" name="number" id="volume-number" class="form-control" value="{{ old('volumes') }}">
+	                            </div>
+	                        </div>
+
+	                        <!-- Add Publisher Button -->
+	                        <div class="form-group">
+	                            <div class="col-sm-offset-3 col-sm-6">
+	                                <button type="submit" class="btn btn-default">
+	                                    <i class="fa fa-btn fa-plus"></i>Add Volume
+	                                </button>
+	                            </div>
+	                        </div>
+	                    </form>
+	                </div>
+	            </div>
+	        @endif
+
 
             <!-- Current Publishers -->
             @if (count($titleVolumes) > 0)
@@ -69,7 +83,7 @@
                                         </td>
 
                                         <td>
-                                            <form action="{{ url('volumes/'.$titleVolume->id) }}" method="POST">
+                                            <form action="{{ url('volumes/'.$titleVolume->volid) }}" method="POST">
                                                 {{ csrf_field() }}
                                                 {{ method_field('DELETE') }}
 
@@ -88,6 +102,10 @@
                         </table>
                     </div>
                 </div>
+            @else
+            <div>
+            	<p>This title has no volumes</p>
+            </div>
             @endif
         </div>
     </div>

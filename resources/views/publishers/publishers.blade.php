@@ -57,7 +57,7 @@
 
                                         <!-- Publisher Delete Button -->
                                         <td>
-                                            <form action="{{ url('publishers/'.$publisher->id) }}" method="POST">
+                                            <form action="{{ url('publishers/' . $publisher->id) }}" method="POST">
                                                 {{ csrf_field() }}
                                                 {{ method_field('DELETE') }}
 

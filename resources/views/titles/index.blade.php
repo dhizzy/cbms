@@ -55,7 +55,7 @@
                                     <tr>
                                         <td class="table-text">
                                         	<div>
-                                        		<a href="{{ url('title/' . $title->id . '/volumes') }}">{{ $title->name }}</a>
+                                        		<a href="{{ url('title/' . $title->id . '/volumes/' . $title->name) }}">{{ $title->name }}</a>
                                         	</div>
                                         </td>
 

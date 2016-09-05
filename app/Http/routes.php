@@ -73,23 +73,31 @@ Route::get('title/update/{id}', 'TitleController@edit');
 
 Route::put('title/update/{id}/name/{name}', 'TitleController@update');
 
+
 /**
- * Get Volume of selected Title. Called from Titles view.
+ * Get Volume of selected Title
  */
 
-Route::get('title/{id}/volumes', 'VolumeController@index');
+Route::get('title/{titleId}/volumes/{titleName}', 'VolumeController@getSpecificVolumes');
+
+
+/**
+ * Get All Volumes
+ */
+
+Route::get('title/volumes', ['as' => 'volumes', 'uses' => 'VolumeController@getAllVolumes']);
 
 /**
  * Add New Volume
  */
 
-//Route::post('volumes', 'VolumeController@create');
+Route::post('volumes', 'VolumeController@create');
 
 /**
  * Delete Volume
  */
 
-//Route::destroy('volumes', 'VolumeController@destroy');
+Route::delete('volumes/{volumeId}', 'VolumeController@destroy');
 
 /**
  * Edit Volume
