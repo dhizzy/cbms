@@ -9,6 +9,8 @@
                 </div>
 
                 <div class="panel-body">
+                    <p>Issue</p>
+                    <p>A comic book issue has a title, volume, issue number, and a publisher.</p>
                     <!-- Display Validation Errors -->
                     @include('common.errors')
 
@@ -48,6 +50,7 @@
                         <table class="table table-striped issue-table">
                             <thead>
                                 <th>Title</th>
+                                <th>Volume</th>
                                 <th>Issue</th>
                                 <th>Publisher</th>
                                 <th>&nbsp;</th>
@@ -55,9 +58,16 @@
                             <tbody>
                                 @foreach ($issues as $issue)
                                     <tr>
+
                                         <td class="table-text">
                                             <div>
                                                 <a href="{{ url('issue/' . $issue->id . '/volumes') }}">{{ $issue->name }}</a>
+                                            </div>
+                                        </td>
+
+                                        <td class="table-text">
+                                            <div>
+                                                <a href="{{ url('issue/' . $issue->id . '/volumes') }}">{{ $issue->volume }}</a>
                                             </div>
                                         </td>
 

@@ -7,8 +7,10 @@
                 <div class="panel-heading">
                     New Publisher
                 </div>
-
                 <div class="panel-body">
+                    <p>Publisher</p>
+                    <p>A comic book publisher is a company or individual that lawfully releases a comic book for release in any media, including print or digital.</p>
+                    <p>Enter any comic book publishers of your comic collection in the following fields. With the Comic book management system, you can relate issues in your collection to publishers.</p>
                     <!-- Display Validation Errors -->
                     @include('common.errors')
 

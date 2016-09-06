@@ -17,7 +17,9 @@ class PublisherController extends Controller
      */
     public function index()
     {
-        $publishers = DB::table('publishers')->get();
+        $publishers = DB::table('publishers')
+                        ->orderBy('publishers.name', 'asc')
+                        ->get();
 
         return view("publishers.publishers", ['publishers' => $publishers]);
     }

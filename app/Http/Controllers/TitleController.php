@@ -11,7 +11,9 @@ use Session;
 class TitleController extends Controller
 {
     public function index(){
-    	$titles = DB::table('titles')->get();
+    	$titles = DB::table('titles')
+                ->orderBy('titles.name', 'asc')
+                ->get();
 
     	return view("titles.index", ['titles' => $titles]);
     }

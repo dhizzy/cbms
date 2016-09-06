@@ -5,7 +5,7 @@ Route::get('/', function(){
 	echo "<br>";
 	echo "<a href = 'titles'>Titles</a>";
 	echo "<br>";
-	echo "<a href = 'volume'>Volume</a>";
+	echo "<a href = 'title/volumes'>Volume</a>";
 	echo "<br>";
 	echo "<a href = 'issues'>Issues</a>";
 	echo "<br>";

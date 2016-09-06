@@ -17,7 +17,8 @@ class IssueController extends Controller
 							->join('issues', 'volumes.id', '=', 'issues.volid')
 							->join('publishers', 'issues.publisherid', '=', 'publishers.id')
 							->select('titles.name', 'titles.id', 'volumes.volume', 'issues.issue', 'publishers.name AS publisherName')
-							->orderBy('volumes.volume', 'issues.issue')
+							->orderBy('volumes.volume', 'asc')
+							->orderBy('issues.issue', 'asc')
 							->get();
 
 		return view('issues.issues', ['issues' => $issues]);
@@ -30,7 +31,8 @@ class IssueController extends Controller
 							->join('issues', 'volumes.id', '=', 'issues.volid')
 							->join('publishers', 'issues.publisherid', '=', 'publishers.id')
 							->select('titles.name', 'titles.id', 'volumes.volume', 'issues.issue', 'publishers.name AS publisherName')
-							->orderBy('volumes.volume', 'issues.issue')
+							->orderBy('volumes.volume', 'asc')
+							->orderBy('issues.issue', 'asc')
 							->where('volumes.id', $volume)
 							->get();
 

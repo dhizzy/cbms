@@ -9,6 +9,9 @@
                 </div>
 
                 <div class="panel-body">
+                    <p>Title</p>
+                    <p>A comic book title is any comic book publication. These titles are often released in a series.</p>
+                    <p>Add any title in your collection here. Because the header on each comic can be misleading, it is recommended to look at the indicia for the official name of a periodical. The indicia can be located on the inside cover, or first page, of a comic book issue.</p>
                     <!-- Display Validation Errors -->
                     @include('common.errors')
 

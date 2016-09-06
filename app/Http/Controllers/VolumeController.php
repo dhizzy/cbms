@@ -11,23 +11,21 @@ use Session;
 class VolumeController extends Controller
 {
 	public function getAllVolumes(){
-    	$volumes = DB::table('volumes')->get();
-
 		$titleVolumes = DB::table('titles')
 							->join('volumes', 'titles.id', '=', 'volumes.titleid')
 							->select('titles.name', 'titles.id', 'volumes.volume', 'volumes.id AS volid')
-							->orderBy('titles.name', 'volumes.volume')
+							->orderBy('titles.name', 'asc')
+							->orderBy('volumes.volume', 'asc')
 							->get();
     	return view("volumes.index", ['titleVolumes' => $titleVolumes]);
 	}
 
     public function getSpecificVolumes($titleId, $titleName){
-    	$volumes = DB::table('volumes')->get();
-
 		$titleVolumes = DB::table('titles')
 							->join('volumes', 'titles.id', '=', 'volumes.titleid')
 							->select('titles.name', 'titles.id', 'volumes.volume', 'volumes.id AS volid')
-							->orderBy('titles.name', 'volumes.volume')
+							->orderBy('titles.name', 'asc')
+							->orderBy('volumes.volume', 'asc')
 							->where('titles.id', $titleId)
 							->get();
 
@@ -50,7 +48,8 @@ class VolumeController extends Controller
 		$titleVolumes = DB::table('titles')
 							->join('volumes', 'titles.id', '=', 'volumes.titleid')
 							->select('titles.name', 'titles.id', 'volumes.volume', 'volumes.id AS volid')
-							->orderBy('titles.name', 'volumes.volume')
+							->orderBy('titles.name', 'asc')
+							->orderBy('volumes.volume', 'asc')
 							->where('volumes.id', $volumeId)
 							->get();
 

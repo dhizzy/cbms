@@ -10,6 +10,9 @@
 	                </div>
 
 	                <div class="panel-body">
+                        <p>Volume</p>
+                        <p>Historically, publishers often refresh a particular comic book title by restarting its numbering at #1. For example, the comic book title Batman has seen two #1 issues, one published in 1940, and the other published in 2010. In this case, the first Batman #1 is Batman Volume #1 Issue #1. The most recent Batman #1 is Batman Volume #2 Issue #1.</p>
+                        <p>Volumes play a vital part in managing your comic book collection. To identify which comic book volume you own, please refer to <a href="http://mycomicshop.com">MyComicShop</a>.</p>
 	                    <!-- Display Validation Errors -->
 	                    @include('common.errors')
 
