@@ -95,11 +95,15 @@ class VolumeController extends Controller
     public function getissues(Request $request){
         $volumeid = $_GET['volumeid'];
 
-        $issues = DB::table('issues')
-                    ->select('issues.id AS id', 'issues.issue AS issue')
-                    ->orderBy('issue', 'asc')
-                    ->where('issues.volid', $volumeid)
-                    ->get();
+        $issues = DB::table('titles')
+                ->join('volumes', 'titles.id', '=', 'volumes.titleid')
+                ->join('issues', 'volumes.id', '=', 'issues.volid')
+                ->leftJoin('publishers', 'issues.publisherid', '=', 'publishers.id')
+                ->select('titles.name', 'titles.id', 'volumes.volume', 'issues.issue', 'publishers.name AS publisherName')
+                ->orderBy('volumes.volume', 'asc')
+                ->orderBy('issues.issue', 'asc')
+                ->where('volumes.id', $volumeid)
+                ->get();
 
         return view("issues.issuesByVolume", ['issues' => $issues]);
     }

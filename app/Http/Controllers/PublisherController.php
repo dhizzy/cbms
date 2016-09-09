@@ -118,4 +118,11 @@ class PublisherController extends Controller
         
         return redirect()->route('publishers');
     }
+
+    public function getPublishers(){
+        $publishers = DB::table('publishers')
+                            ->orderBy('publishers.name', 'asc')
+                            ->get();
+        return view('publishers.select', ['publishers'=>$publishers]);
+    }
 }

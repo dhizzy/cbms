@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\Http\Requests;
-use App\Volume;
+use App\Issue;
 use Session;
 
 class IssueController extends Controller
@@ -47,5 +47,16 @@ class IssueController extends Controller
 					->get();
 		
 		return view('issues.addissue', ['titles' => $titles]);
+	}
+
+	public function create(Request $request){
+		$issue = new Issue;
+		$issue->volid = $request->volume;
+		$issue->issue = $request->issue;
+		if (isset($request->publisher)){
+			$issue->publisherid = $request->publisher;			
+		}
+		$issue->save();
+		return redirect()->route('addissue');
 	}
 }

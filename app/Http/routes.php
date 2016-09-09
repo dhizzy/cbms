@@ -132,7 +132,7 @@ Route::get('issues/{volume}', 'IssueController@findIssues');
  * Add New Issues
  */
 
-//Route::post('issues', 'IssuesController@create');
+Route::post('issues', 'IssueController@create');
 
 /**
  * Delete Issue
@@ -150,7 +150,7 @@ Route::get('issues/{volume}', 'IssueController@findIssues');
  * Add Series/Volume/Issue
  */
 
-Route::get('addissue', 'IssueController@addNewIssue');
+Route::get('addissue', ['as'=>'addissue', 'uses'=>'IssueController@addNewIssue']);
 
 /**
  * Ajax Request for volume
