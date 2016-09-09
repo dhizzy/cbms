@@ -75,4 +75,32 @@ class VolumeController extends Controller
         
     	return redirect()->route('volumes');
     }
+
+    public function getVolumeForIssues($issueid){
+        echo $issueid;
+    }
+
+    public function getvolume(Request $request){
+        $myval = $_GET['issueid'];
+
+        $titleVolumes = DB::table('volumes')
+                    ->select('volumes.id AS id', 'volumes.volume AS volume')
+                    ->orderBy('volumes.volume', 'asc')
+                    ->where('volumes.titleid', $myval)
+                    ->get();
+
+        return view("volumes.getVolumes", ['titleVolumes' => $titleVolumes]);
+    }
+
+    public function getissues(Request $request){
+        $volumeid = $_GET['volumeid'];
+
+        $issues = DB::table('issues')
+                    ->select('issues.id AS id', 'issues.issue AS issue')
+                    ->orderBy('issue', 'asc')
+                    ->where('issues.volid', $volumeid)
+                    ->get();
+
+        return view("issues.issuesByVolume", ['issues' => $issues]);
+    }
 }

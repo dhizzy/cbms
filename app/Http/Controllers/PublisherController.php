@@ -17,6 +17,7 @@ class PublisherController extends Controller
      */
     public function index()
     {
+        $selectType='publisher';
         $publishers = DB::table('publishers')
                         ->orderBy('publishers.name', 'asc')
                         ->get();

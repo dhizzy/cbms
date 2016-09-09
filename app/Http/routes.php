@@ -9,6 +9,8 @@ Route::get('/', function(){
 	echo "<br>";
 	echo "<a href = 'issues'>Issues</a>";
 	echo "<br>";
+	echo "<a href = 'addissue'>Add Issue</a>";
+	echo "<br>";
 });
 
 /**
@@ -144,3 +146,18 @@ Route::get('issues/{volume}', 'IssueController@findIssues');
 
 //Route::edit('issues', 'IssueController@edit');
 
+/**
+ * Add Series/Volume/Issue
+ */
+
+Route::get('addissue', 'IssueController@addNewIssue');
+
+/**
+ * Ajax Request for volume
+ */
+
+Route::get('volume/{ issueid }', 'VolumeController@getVolumeForIssues');
+
+Route::get('/addissue/getvolume', 'VolumeController@getvolume');
+
+Route::get('/addissue/getissues', 'VolumeController@getissues');

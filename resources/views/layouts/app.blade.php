@@ -15,6 +15,9 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
+    <script src = "{{ asset('javascript/scripts.js') }}" type = 'text/javascript'></script>
+    <script src = "{{ asset('javascript/ajax.js') }}" type = 'text/javascript'></script>
+
     <style>
         body {
             font-family: 'Lato';
@@ -37,6 +40,8 @@
 
         </div>
     </nav>
+
+    <div id="demo"></div>
 
     @yield('content')
 

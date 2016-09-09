@@ -38,4 +38,14 @@ class IssueController extends Controller
 
 		return view('issues.issues', ['issues' => $issues]);
 	}
+
+	public function addNewIssue(){
+		
+		$titles = DB::table('titles')
+					->select('titles.name', 'titles.id')
+					->orderBy('titles.name')
+					->get();
+		
+		return view('issues.addissue', ['titles' => $titles]);
+	}
 }
