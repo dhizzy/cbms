@@ -21,6 +21,7 @@ function getVolume(){
 }
 
 function getIssues(){
+
 	var volumeid = $("#volumeSelectbox").val();
 
 	$.ajax({
@@ -39,20 +40,3 @@ function getIssues(){
 	});
 }
 
-function getPublishers(){
-	alert("H");
-	$.ajax({
-		method: "GET",
-		url: './publishers/getPublishers',
-		data: {
-			
-		},
-		datatype: 'JSON',
-		success: function(resp){
-			$("#publisherContainer").html(resp);
-		},
-		error: function(resp){
-			console.log("ERROR:", resp);
-		}
-	});
-}

@@ -105,6 +105,13 @@ class VolumeController extends Controller
                 ->where('volumes.id', $volumeid)
                 ->get();
 
-        return view("issues.issuesByVolume", ['issues' => $issues]);
+        $publishers = DB::table('publishers')
+            ->get();
+
+        $data['publishers'] = $publishers;
+        $myissues = $issues;
+        $data['issues'] = $issues;
+
+        return view("issues.issuesByVolume", ['publishers' => $publishers, 'issues'=>$issues]);
     }
 }

@@ -26,7 +26,6 @@
 
 
 		</div>
-
 	</div>
 
 <div id="issuesContainer" class='row'>

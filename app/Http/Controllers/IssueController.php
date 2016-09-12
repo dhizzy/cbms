@@ -15,7 +15,7 @@ class IssueController extends Controller
 		$issues = DB::table('titles')
 							->join('volumes', 'titles.id', '=', 'volumes.titleid')
 							->join('issues', 'volumes.id', '=', 'issues.volid')
-							->join('publishers', 'issues.publisherid', '=', 'publishers.id')
+							->leftJoin('publishers', 'issues.publisherid', '=', 'publishers.id')
 							->select('titles.name', 'titles.id', 'volumes.volume', 'issues.issue', 'publishers.name AS publisherName')
 							->orderBy('volumes.volume', 'asc')
 							->orderBy('issues.issue', 'asc')
